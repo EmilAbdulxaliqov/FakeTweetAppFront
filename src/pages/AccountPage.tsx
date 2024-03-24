@@ -5,3 +5,5 @@ function AccountPage() {
     </div>
   );
 }
+
+export default AccountPage;

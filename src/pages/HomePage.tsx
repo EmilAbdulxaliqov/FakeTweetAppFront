@@ -8,6 +8,8 @@ function HomePage() {
         fontStyle={"normal"}
         fontWeight={"900"}
         fontSize={"larger"}
+        textAlign={"center"}
+        background={"#f5f5f5"}
       >
         Home
       </Text>
