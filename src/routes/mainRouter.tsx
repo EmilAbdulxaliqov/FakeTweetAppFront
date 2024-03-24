@@ -2,11 +2,13 @@ import HomePage from "../pages/HomePage";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import { createBrowserRouter } from "react-router-dom";
+import MainLayout from "../layout/MainLayout";
 
 function mainRouter() {
   let element = createBrowserRouter([
     {
       path: "/",
+      element:<MainLayout/>,
       children: [
         { index: true, element: <HomePage /> },
         { path: "user", element: <h1>User dfksjflkdjskf</h1> },
