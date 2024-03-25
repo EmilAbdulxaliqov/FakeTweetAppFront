@@ -8,10 +8,13 @@ function MobileHomeHeader() {
       className="mobile_header"
       display={{ base: "flex", md: "none" }}
       py={2}
+      px={2}
       justifyContent={"space-between"}
       alignItems={"center"}
       color={"white"}
       w={"full"}
+      borderBottom={"1px"}
+      borderColor={"#8899A6"}
     >
       <Box className="accound_icon">
         <Avatar name="Ali Huseynov" boxSize={8} />

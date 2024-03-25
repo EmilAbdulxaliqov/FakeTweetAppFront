@@ -4,16 +4,15 @@ import Sidebar from "../components/Sidebar/Sidebar";
 
 function MainLayout() {
   return (
-    <Box px={"5%"} bg={"#17202A"}>
+    <Box px={{ md: "5%" }} bg={"#17202A"}>
       <Grid
-        templateAreas={{base:`"main main"`, md: `"nav main side"` }}
+        templateAreas={{ base: `"main main main"`, md: `"nav main side"` }}
         gridTemplateColumns={"1fr 3fr 1fr"}
         gap="1"
-        color="blackAlpha.700"
         fontWeight="bold"
       >
         <GridItem
-          display={{base: "none", md: "block" }}
+          display={{ base: "none", md: "block" }}
           px="2"
           area={"nav"}
           height={"100vh"}
@@ -22,7 +21,7 @@ function MainLayout() {
         >
           <Sidebar />
         </GridItem>
-        <GridItem pl="2" area={"main"}>
+        <GridItem pl={{ md: "2" }} area={"main"}>
           <Outlet />
         </GridItem>
       </Grid>

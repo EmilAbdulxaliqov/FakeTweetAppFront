@@ -1,15 +1,14 @@
 import { Box } from "@chakra-ui/react";
 import MobileHomeHeader from "../components/home/MobileHomeHeader";
 import TweetContent from "../components/home/TweetContent";
+import PostList from "../components/home/PostList";
 
 function HomePage() {
   return (
     <Box borderX={"1px"} borderColor={"#8899A6"}>
-      <MobileHomeHeader/>
-      <TweetContent/>
-
-      asdasd ad
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <MobileHomeHeader />
+      <TweetContent />
+      <PostList />
     </Box>
   );
 }

@@ -3,7 +3,7 @@ import React from "react";
 
 function TweetContent() {
   return (
-    <Box borderY={"1px"} borderColor={"#8899A6"} px={2} py={3}>
+    <Box borderY={"1px"} borderColor={"#8899A6"} px={2} py={3}  display={{base:"none",md:"block"}}>
       <Box display={"flex"}>
         <Avatar name="Ali Huseynov" boxSize={10} />
         <Textarea
@@ -17,7 +17,9 @@ function TweetContent() {
         />
       </Box>
       <Box display={"flex"} w={"full"} justifyContent={"end"} mt={2}>
-        <Button isDisabled color={"#fff"} bg={"#1DA1F2"}>Tweet</Button>
+        <Button isDisabled color={"#fff"} bg={"#1DA1F2"}>
+          Tweet
+        </Button>
       </Box>
     </Box>
   );
