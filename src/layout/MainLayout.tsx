@@ -6,14 +6,14 @@ function MainLayout() {
   return (
     <Box px={"5%"} bg={"#17202A"}>
       <Grid
-        templateAreas={{ md: `"nav main"`, sm: `"nav" "main"` }}
-        gridTemplateColumns={"1fr 3fr"}
+        templateAreas={{base:`"main main"`, md: `"nav main side"` }}
+        gridTemplateColumns={"1fr 3fr 1fr"}
         gap="1"
         color="blackAlpha.700"
         fontWeight="bold"
       >
         <GridItem
-          display={{ sm: "none", md: "block" }}
+          display={{base: "none", md: "block" }}
           px="2"
           area={"nav"}
           height={"100vh"}

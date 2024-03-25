@@ -11,6 +11,7 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
+import { Link } from "react-router-dom";
 function SidebarAccound() {
   return (
     <Box
@@ -22,10 +23,13 @@ function SidebarAccound() {
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <Box display={"flex"} gap={3} alignItems={"center"}>
-        <Avatar name="Ali Huseynov" />
-        <Text color={"white"}>Ali Huseynov</Text>
-      </Box>
+      <Link to="/profile">
+        <Box display={"flex"} gap={3} alignItems={"center"}>
+          <Avatar name="Ali Huseynov" boxSize={10} />
+          <Text color={"white"}>Ali Huseynov</Text>
+        </Box>{" "}
+      </Link>
+
       <Menu placement="top-end">
         <MenuButton>
           <Icon as={BsThreeDots} color={"white"} />
