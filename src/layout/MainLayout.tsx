@@ -1,28 +1,28 @@
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-import React from "react";
 import { Outlet } from "react-router";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 function MainLayout() {
   return (
     <Box px={"5%"} bg={"#17202A"}>
       <Grid
-        templateAreas={`"nav main"`}
+        templateAreas={{ md: `"nav main"`, sm: `"nav" "main"` }}
         gridTemplateColumns={"1fr 3fr"}
         gap="1"
         color="blackAlpha.700"
         fontWeight="bold"
       >
         <GridItem
-          pl="2"
-          bg="pink.300"
+          display={{ sm: "none", md: "block" }}
+          px="2"
           area={"nav"}
           height={"100vh"}
           pos={"sticky"}
           top={"0"}
         >
-          Nav
+          <Sidebar />
         </GridItem>
-        <GridItem pl="2" bg="green.300" area={"main"}>
+        <GridItem pl="2" area={"main"}>
           <Outlet />
         </GridItem>
       </Grid>
