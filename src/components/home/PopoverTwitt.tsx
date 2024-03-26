@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import {useRef} from "react";
 
 import { FaPencil } from "react-icons/fa6";
 import PopoverForm from "./PopoverForm";

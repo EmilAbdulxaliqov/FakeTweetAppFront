@@ -2,11 +2,11 @@ import { Avatar, Box, Text } from "@chakra-ui/react";
 import CommentForm from "./CommentForm";
 import { useQuery } from "react-query";
 import instance from "../../../../service/axiosService";
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
-  const [open, setOpen] = useState(isOpened);
+  // const [open, setOpen] = useState(isOpened);
 
   const { isLoading, error, data } = useQuery(["responseComment", id], () => {
     return instance.get("/comment/" + id, {});

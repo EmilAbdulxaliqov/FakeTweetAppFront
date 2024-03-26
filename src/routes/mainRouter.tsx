@@ -4,16 +4,23 @@ import LoginPage from "../pages/LoginPage";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Service from "../pages/Service";
+import PrivateRoutes from "./PrivateRoutes.tsx";
 
 function mainRouter() {
-  let element = createBrowserRouter([
+  const element = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
       children: [
-        { index: true, element: <HomePage /> },
-        { path: "user/:id", element: <h1>User dfksjflkdjskf</h1> },
-        { path: "service", element: <Service /> },
+        {
+          path: "/",
+          element: <PrivateRoutes />,
+          children: [
+            { index: true, element: <HomePage /> },
+            { path: "user/:id", element: <h1>User dfksjflkdjskf</h1> },
+            { path: "service", element: <Service /> },
+          ]
+        },
       ],
 
       // children: [

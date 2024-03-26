@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import PostCard from "./PostCard";
 import { Box } from "@chakra-ui/react";
-import axios from "axios";
 import instance from "../../../service/axiosService";
 import { useQuery } from "react-query";
+import {PostType} from "../../../assets/types/PostType.ts";
 
 function PostList() {
   const { isLoading, error, data } = useQuery("responsePost", () =>
@@ -15,7 +14,7 @@ console.log(data);
 
   return (
     <Box>
-      {data?.data?.map((post: any) => (
+      {data?.data?.map((post: PostType) => (
         <PostCard key={post.id} post={post} />
       ))}
     </Box>

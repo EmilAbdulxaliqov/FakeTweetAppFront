@@ -1,6 +1,5 @@
 import { Box, Icon, Text } from "@chakra-ui/react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import instance from "../../../service/axiosService";
 function PostLike({ likeCount, id }: { likeCount: number; id: number }) {

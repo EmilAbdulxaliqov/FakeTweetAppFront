@@ -15,7 +15,7 @@ import {ViewIcon, ViewOffIcon} from "@chakra-ui/icons";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {AuthService} from "../services/api/AuthService.ts";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const registerSchema = Yup.object().shape({
     username: Yup.string()
@@ -109,6 +109,9 @@ function RegisterPage() {
                   {formik.errors.password ? <FormHelperText color={"red"}>{formik.errors.password}</FormHelperText> : null}
               </FormControl>
               <Button w={"100%"} colorScheme='twitter' type={"submit"}>Register</Button>
+              <Text color={"white"}>Already have an account?{" "}
+                  <Box as={Link} to="/auth/login" textDecoration={"underline"} color={"#1DA1F2"}>Login</Box>
+              </Text>
           </Box>
       </Flex>
     </Flex>

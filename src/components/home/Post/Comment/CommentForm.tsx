@@ -1,5 +1,5 @@
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import instance from "../../../../service/axiosService";
 import { useMutation, useQueryClient } from "react-query";
 

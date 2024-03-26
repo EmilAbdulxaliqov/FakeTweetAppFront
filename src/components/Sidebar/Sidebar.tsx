@@ -1,7 +1,7 @@
 import { Box, Image } from "@chakra-ui/react";
-import logo from "../../assets/Aftafa.png";
+import logo from "../../assets/images/Aftafa.png";
 import SidebarLinks from "./SidebarLinks";
-import SidebarAccound from "./SidebarAccound";
+import SidebarAccount from "./SidebarAccount.tsx";
 
 function Sidebar() {
   return (
@@ -10,7 +10,7 @@ function Sidebar() {
         <Image src={logo} alt="site logo" h={"36px"} w={"36px"} />
       </Box>
       <SidebarLinks />
-      <SidebarAccound />
+      <SidebarAccount />
     </Box>
   );
 }

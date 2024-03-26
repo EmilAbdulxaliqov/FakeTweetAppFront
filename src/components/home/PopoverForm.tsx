@@ -3,7 +3,6 @@ import {
   ButtonGroup,
   FormControl,
   FormLabel,
-  Input,
   Stack,
   Textarea,
 } from "@chakra-ui/react";
@@ -12,7 +11,6 @@ import instance from "../../service/axiosService";
 import { useMutation, useQueryClient } from "react-query";
 
 function PopoverForm({
-  firstFieldRef,
   onCancel,
 }: {
   firstFieldRef: React.RefObject<HTMLInputElement>;

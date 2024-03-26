@@ -126,6 +126,9 @@ function LoginPage() {
                         {formik.errors.password ? <FormHelperText color={"red"}>{formik.errors.password}</FormHelperText> : null}
                     </FormControl>
                     <Button w={"100%"} colorScheme='twitter' type={"submit"}>Login</Button>
+                    <Text color={"white"}>Don't have an account?{" "}
+                        <Box as={"a"} href="/auth/register" textDecoration={"underline"} color={"#1DA1F2"}>Register</Box>
+                    </Text>
                 </Box>
             </Flex>
         </Flex>

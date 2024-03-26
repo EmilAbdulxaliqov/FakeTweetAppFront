@@ -12,7 +12,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
-function SidebarAccound() {
+function SidebarAccount() {
   const userName = localStorage.getItem("username");
   return (
     <Box
@@ -50,4 +50,4 @@ function SidebarAccound() {
   );
 }
 
-export default SidebarAccound;
+export default SidebarAccount;

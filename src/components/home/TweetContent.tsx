@@ -1,6 +1,5 @@
 import { Avatar, Box, Button, Textarea } from "@chakra-ui/react";
-import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import instance from "../../service/axiosService";
 

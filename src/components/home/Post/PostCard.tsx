@@ -1,15 +1,16 @@
 import { Avatar, Box, Button, Icon, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaRegComment } from "react-icons/fa";
 import PostLike from "./PostLike";
 import CommentList from "./Comment/CommentList";
 import { Link } from "react-router-dom";
 import PostDelete from "./PostDelete";
+import {PostType} from "../../../assets/types/PostType.ts";
 
-function PostCard({ post }: { post: any }) {
-  const { id, title, content, userId, username, likeCount } = post;
+function PostCard({ post }: { post: PostType }) {
+  const { id, content, userId, username, likeCount } = post;
   const [isOpened, setIsOpened] = useState(false);
-  const locUserId = localStorage.getItem("userId");
+  const locUserId = parseInt(localStorage.getItem("userId")!);
   const handleOpen = () => {
     setIsOpened(!isOpened);
   };
