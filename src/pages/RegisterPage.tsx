@@ -22,11 +22,13 @@ const registerSchema = Yup.object().shape({
         .trim("Username cannot start or end with whitespace")
         .strict(true)
         .required('Username is required')
+        .min(3, 'Username is too short')
         .max(255, 'Username is too long'),
     password: Yup.string()
         .trim("Password cannot start or end with whitespace")
         .strict(true)
         .required('Password is required')
+        .min(8, 'Password is too short')
         .max(255, 'Password is too long')
 });
 
@@ -44,18 +46,27 @@ function RegisterPage() {
             console.log(JSON.stringify(values, null, 2));
             AuthService.register(values.username, values.password).then(response => {
                 console.log(response);
-                if (response.status == 200) {
+                if (response.status == 201) {
                     toast({
                         title: "Account created successfully",
                         status: 'success',
                         position: 'top-right',
                         isClosable: true,
-                        duration: 3000
+                        duration: 1000
                     })
                     setTimeout(() => {
                         navigate('/auth/login');
-                    }, 3000);
+                    }, 2000);
                 }
+            }).catch(error => {
+                console.log(error);
+                toast({
+                    title: error.response.data,
+                    status: 'error',
+                    position: 'top-right',
+                    isClosable: true,
+                    duration: 2000
+                })
             });
         }
     });

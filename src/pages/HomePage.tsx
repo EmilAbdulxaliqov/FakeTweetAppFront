@@ -1,6 +1,15 @@
 import { Text } from "@chakra-ui/react";
+import {useEffect, useState} from "react";
+import {HomeService} from "../services/api/HomeService.ts";
 
 function HomePage() {
+  const [data, setData] = useState([]); // [1]
+  useEffect(() => {
+      HomeService.getPosts().then(response => {
+            console.log(response);
+            setData(response.data);
+      });
+  }, [])
   return (
     <div>
       <Text
@@ -14,6 +23,9 @@ function HomePage() {
         Home
       </Text>
       <p>Welcome to the Home page!</p>
+        {
+            JSON.stringify(data, null, 2)
+        }
     </div>
   );
 }
