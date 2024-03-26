@@ -1,0 +1,6 @@
+
+.comment_list {
+    scrollbar-width: thin; /* Kaydırma çubuğunun genişliği */
+    scrollbar-color: #212f41 transparent; /* Kaydırma çubuğu ve arka plan rengi */
+  }
+  

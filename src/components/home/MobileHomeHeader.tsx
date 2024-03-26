@@ -3,6 +3,7 @@ import React from "react";
 import PopoverTwitt from "./PopoverTwitt";
 
 function MobileHomeHeader() {
+  const username = localStorage.getItem("username");
   return (
     <Box
       className="mobile_header"
@@ -17,7 +18,7 @@ function MobileHomeHeader() {
       borderColor={"#8899A6"}
     >
       <Box className="accound_icon">
-        <Avatar name="Ali Huseynov" boxSize={8} />
+        <Avatar name={username || ''} boxSize={8} />
       </Box>
       <Text className="header_title">Home</Text>
       <PopoverTwitt />

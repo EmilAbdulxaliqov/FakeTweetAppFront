@@ -12,7 +12,7 @@ function mainRouter() {
       element: <MainLayout />,
       children: [
         { index: true, element: <HomePage /> },
-        { path: "user", element: <h1>User dfksjflkdjskf</h1> },
+        { path: "user/:id", element: <h1>User dfksjflkdjskf</h1> },
         { path: "service", element: <Service /> },
       ],
 

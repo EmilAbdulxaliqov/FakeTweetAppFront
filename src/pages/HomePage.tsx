@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import MobileHomeHeader from "../components/home/MobileHomeHeader";
 import TweetContent from "../components/home/TweetContent";
-import PostList from "../components/home/PostList";
+import PostList from "../components/home/Post/PostList";
 
 function HomePage() {
   return (
