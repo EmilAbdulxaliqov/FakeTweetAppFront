@@ -16,6 +16,13 @@ export const HomeService = {
       content,
     });
   },
+  updatePost: async (postId: number, title: string, content: string) => {
+    return axiosPrivate.put(`post/${postId}`, {
+      title,
+      content,
+    });
+  }
+  ,
   addComment: async (postId: number, userId: number, content: string) => {
     return axiosPrivate.post(`comment/${postId}/user/${userId}`, {
       content,

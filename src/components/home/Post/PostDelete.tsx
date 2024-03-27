@@ -1,10 +1,11 @@
 import { MdDeleteOutline } from "react-icons/md";
-import { Button, Icon } from "@chakra-ui/react";
+import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../../services/api/HomeService";
 
 function PostDelete({ id }: { id: number }) {
   const queryClient = useQueryClient();
+  const toast = useToast();
   const deletePost = async () => {
     await HomeService.deletePost(id);
   };
@@ -12,6 +13,12 @@ function PostDelete({ id }: { id: number }) {
   const mutation = useMutation(deletePost, {
     onSuccess: () => {
       queryClient.invalidateQueries("responsePost");
+      toast({
+        title: "Delete Post !",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     },
     onError: (error) => {
       console.log(error);

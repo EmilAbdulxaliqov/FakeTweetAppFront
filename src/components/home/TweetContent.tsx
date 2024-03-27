@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Textarea } from "@chakra-ui/react";
+import { Avatar, Box, Button, Textarea, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../services/api/HomeService";
@@ -6,7 +6,7 @@ import { HomeService } from "../../services/api/HomeService";
 function TweetContent() {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-
+  const toast = useToast();
   const user = JSON.parse(localStorage.getItem("user") || "");
 
   const addPost = async () => {
@@ -17,6 +17,12 @@ function TweetContent() {
     onSuccess: () => {
       queryClient.invalidateQueries("responsePost");
       setTweet("");
+      toast({
+        title: "Create Post !",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     },
 
     onError: (error) => {

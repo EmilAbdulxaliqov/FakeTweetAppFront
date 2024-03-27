@@ -24,17 +24,19 @@ function PostCard({ post }: { post: PostType }) {
           <Text>{username}</Text>
         </Box>
       </Link>
-
-      <Text pl={{ base: "45px", md: "52px" }} fontWeight={"500"}>
-        {content}
-      </Text>
+      {
+       
+        <Text pl={{ base: "45px", md: "52px" }} fontWeight={"500"}>
+          {content}
+        </Text>
+      }
 
       <Box>
         <Box
           display={"flex"}
           alignItems={"center"}
           justifyContent={"end"}
-          gap={3}
+          gap={1}
         >
           <Button
             onClick={handleOpen}
@@ -49,8 +51,7 @@ function PostCard({ post }: { post: PostType }) {
           <PostLike usersIdWhoLikedPost={usersIdWhoLikedPost} id={id} />
 
           {user.userId == userIdWhoCreatedPost && <PostDelete id={id} />}
-          {user.userId == userIdWhoCreatedPost && <UpdatePost id={id} />}
-
+          {user.userId == userIdWhoCreatedPost && <UpdatePost id={id} content={content} />}
         </Box>
         <CommentList isOpened={isOpened} id={id} />
       </Box>
