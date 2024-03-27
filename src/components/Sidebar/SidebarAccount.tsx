@@ -14,6 +14,12 @@ import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 function SidebarAccount() {
   const user = JSON.parse(localStorage.getItem("user") || "");
+  const Logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/auth/login";
+  };
+
   return (
     <Box
       className="sidebar_accound"
@@ -24,12 +30,13 @@ function SidebarAccount() {
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <Link to="/user/2">
+      <Link to="/user/2" style={{ width: "50%" }}>
         <Box display={"flex"} gap={3} alignItems={"center"}>
-          <Avatar name={user.sub || ""} boxSize={10} />
-          <Text color={"white"}>{user.sub}</Text>
-          
-        </Box>{" "}
+          <Avatar name={user?.sub || ""} boxSize={10} />
+          <Text color={"white"} w={"100%"}>
+            {user?.sub}
+          </Text>
+        </Box>
       </Link>
 
       <Menu placement="top-end">
@@ -37,7 +44,7 @@ function SidebarAccount() {
           <Icon as={BsThreeDots} color={"white"} />
         </MenuButton>
         <MenuList>
-          <MenuItem as="a" href="#" display={"flex"} gap={3}>
+          <MenuItem as="a" href="#" display={"flex"} gap={3} onClick={Logout}>
             <Icon as={MdLogout} />
             Logout
           </MenuItem>

@@ -1,23 +1,21 @@
 import { MdDeleteOutline } from "react-icons/md";
-import { Button, Icon } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "react-query";
-import { HomeService } from "../../../services/api/HomeService";
+import { HomeService } from "../../../../services/api/HomeService";
+import { Button, Icon } from "@chakra-ui/react";
 
-function PostDelete({ id }: { id: number }) {
+function CommentDelete({ id, postId }: { id: number; postId: number }) {
   const queryClient = useQueryClient();
-  const deletePost = async () => {
-    await HomeService.deletePost(id);
+  const commentDelete = async () => {
+    await HomeService.deleteComment(id);
   };
-
-  const mutation = useMutation(deletePost, {
+  const mutation = useMutation(commentDelete, {
     onSuccess: () => {
-      queryClient.invalidateQueries("responsePost");
+      queryClient.invalidateQueries(["responseComment", postId]);
     },
     onError: (error) => {
       console.log(error);
     },
   });
-
   return (
     <Button
       onClick={() => mutation.mutate()}
@@ -31,4 +29,4 @@ function PostDelete({ id }: { id: number }) {
   );
 }
 
-export default PostDelete;
+export default CommentDelete;

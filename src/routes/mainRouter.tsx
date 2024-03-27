@@ -10,16 +10,15 @@ function mainRouter() {
   const element = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: <PrivateRoutes />,
       children: [
         {
-          path: "/",
-          element: <PrivateRoutes />,
+          element: <MainLayout />,
           children: [
             { index: true, element: <HomePage /> },
             { path: "user/:id", element: <h1>User dfksjflkdjskf</h1> },
             { path: "service", element: <Service /> },
-          ]
+          ],
         },
       ],
 

@@ -1,19 +1,18 @@
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useState } from "react";
-import instance from "../../../../service/axiosService";
 import { useMutation, useQueryClient } from "react-query";
+import { HomeService } from "../../../../services/api/HomeService";
 
 function CommentForm({ id }: { id: number }) {
   const queryClient = useQueryClient();
   const [comment, setComment] = useState("");
   const user = JSON.parse(localStorage.getItem("user") || "");
-  const addPost = async () => {
-    await instance.post(`comment/${id}/user/${user.userId}`, {
-      content: comment,
-    });
+
+  const addComment = async () => {
+    await HomeService.addComment(id, user.userId, comment);
   };
 
-  const mutation = useMutation(addPost, {
+  const mutation = useMutation(addComment, {
     onSuccess: () => {
       queryClient.invalidateQueries(["responseComment", id]);
       setComment("");

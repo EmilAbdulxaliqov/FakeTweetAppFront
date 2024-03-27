@@ -1,18 +1,16 @@
 import { Avatar, Box, Button, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import instance from "../../service/axiosService";
+import { HomeService } from "../../services/api/HomeService";
 
 function TweetContent() {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
 
   const user = JSON.parse(localStorage.getItem("user") || "");
+
   const addPost = async () => {
-    await instance.post("post/user/" + user.userId, {
-      content: tweet,
-      title: "asd",
-    });
+    await HomeService.createPost("asd", tweet, user.userId);
   };
 
   const mutation = useMutation(addPost, {

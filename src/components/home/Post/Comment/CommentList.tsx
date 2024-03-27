@@ -1,15 +1,16 @@
 import { Avatar, Box, Text } from "@chakra-ui/react";
 import CommentForm from "./CommentForm";
 import { useQuery } from "react-query";
-import instance from "../../../../service/axiosService";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
+import { HomeService } from "../../../../services/api/HomeService";
+import CommentDelete from "./CommentDelete";
 
 function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const { isLoading, error, data } = useQuery(
     ["responseComment", id],
     () => {
-      return instance.get("/comment/" + id, {});
+      return HomeService.getComments(id);
     },
     { refetchOnWindowFocus: false }
   );
@@ -35,6 +36,7 @@ function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
       >
         {data?.data?.length > 0 ? (
           data?.data?.map((comment: any) => (
+            
             <Box
               key={comment.id}
               my={1}
@@ -45,12 +47,13 @@ function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
               color={"white"}
               transition={"0.3s"}
             >
-              <Link to={`/profile/${comment.userId}`}>
-                <Box display={"flex"} gap={3} w={"full"}>
+              <Link to={`/profile/${comment.userId}`} >
+                <Box display={"flex"} gap={3}  w={"50%"}>
                   <Avatar name={comment.username} boxSize={10} />
-                  <Text> {comment.username}</Text>
+                  <Text > {comment.username}</Text>
                 </Box>
               </Link>
+              <Box display={"flex"} gap={3} w={"full"} justifyContent={"space-between"} alignItems={"center"}>
               <Text
                 pl={{ base: "45px", md: "52px" }}
                 fontSize={"14px"}
@@ -58,6 +61,9 @@ function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
               >
                 {comment.content}
               </Text>
+           
+              {user.userId == comment.userId && <CommentDelete id={comment.id} postId ={id} />}
+             </Box>
             </Box>
           ))
         ) : (
