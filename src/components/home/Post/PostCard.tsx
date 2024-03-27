@@ -5,7 +5,7 @@ import PostLike from "./PostLike";
 import CommentList from "./Comment/CommentList";
 import { Link } from "react-router-dom";
 import PostDelete from "./PostDelete";
-import {PostType} from "../../../assets/types/PostType.ts";
+import { PostType } from "../../../assets/types/PostType.ts";
 
 function PostCard({ post }: { post: PostType }) {
   const { id, content, userId, username, likeCount } = post;
@@ -45,13 +45,8 @@ function PostCard({ post }: { post: PostType }) {
           </Button>
 
           <PostLike likeCount={likeCount} id={id} />
-         
-          {
-            userId == locUserId && (
-              <PostDelete id={id} />
-            )
-          }
-          
+
+          {userId == locUserId && <PostDelete id={id} />}
         </Box>
         <CommentList isOpened={isOpened} id={id} />
       </Box>

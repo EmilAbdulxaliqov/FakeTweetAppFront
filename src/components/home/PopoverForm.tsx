@@ -18,10 +18,9 @@ function PopoverForm({
 }) {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-  const userId = localStorage.getItem("userId");
-
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const addPost = async () => {
-    await instance.post("post/user/" + userId, {
+    await instance.post("post/user/" + user.userId, {
       content: tweet,
       title: "asd",
     });

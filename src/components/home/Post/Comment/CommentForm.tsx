@@ -6,9 +6,9 @@ import { useMutation, useQueryClient } from "react-query";
 function CommentForm({ id }: { id: number }) {
   const queryClient = useQueryClient();
   const [comment, setComment] = useState("");
-  const userId = localStorage.getItem("userId");
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const addPost = async () => {
-    await instance.post(`comment/${id}/user/${userId}`, {
+    await instance.post(`comment/${id}/user/${user.userId}`, {
       content: comment,
     });
   };

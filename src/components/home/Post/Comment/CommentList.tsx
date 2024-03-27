@@ -6,11 +6,13 @@ import instance from "../../../../service/axiosService";
 import { Link } from "react-router-dom";
 
 function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
-  // const [open, setOpen] = useState(isOpened);
-
-  const { isLoading, error, data } = useQuery(["responseComment", id], () => {
-    return instance.get("/comment/" + id, {});
-  },{refetchOnWindowFocus: false});
+  const { isLoading, error, data } = useQuery(
+    ["responseComment", id],
+    () => {
+      return instance.get("/comment/" + id, {});
+    },
+    { refetchOnWindowFocus: false }
+  );
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;

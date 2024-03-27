@@ -5,16 +5,15 @@ import instance from "../../../service/axiosService";
 function PostLike({ likeCount, id }: { likeCount: number; id: number }) {
   const [isLike, setIsLike] = useState(false);
   const [likeCountdis, setLikeCount] = useState(likeCount);
-  const userId = localStorage.getItem("userId");
-
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const Like = async () => {
-    await instance.post(`post/${id}/like/${userId}`);
+    await instance.post(`post/${id}/like/${user.userId}`);
     setIsLike(true);
     setLikeCount(likeCountdis + 1);
   };
 
   const disLike = async () => {
-    await instance.delete(`post/${id}/unlike/${userId}`);
+    await instance.delete(`post/${id}/unlike/${user.userId}`);
     setIsLike(false);
     setLikeCount(likeCountdis - 1);
   };

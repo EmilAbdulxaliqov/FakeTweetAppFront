@@ -6,10 +6,10 @@ import instance from "../../service/axiosService";
 function TweetContent() {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-  const userId = localStorage.getItem("userId");
-  const username = localStorage.getItem("username");
+
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const addPost = async () => {
-    await instance.post("post/user/" + userId, {
+    await instance.post("post/user/" + user.userId, {
       content: tweet,
       title: "asd",
     });
@@ -36,7 +36,7 @@ function TweetContent() {
       display={{ base: "none", md: "block" }}
     >
       <Box display={"flex"}>
-        <Avatar name={username || ""} boxSize={10} />
+        <Avatar name={user.sub || ""} boxSize={10} />
         <Textarea
           value={tweet}
           placeholder="What's happening?"

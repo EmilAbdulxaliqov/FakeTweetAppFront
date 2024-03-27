@@ -13,7 +13,7 @@ import { BsFillGearFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 function SidebarAccount() {
-  const userName = localStorage.getItem("username");
+  const user = JSON.parse(localStorage.getItem("user") || "");
   return (
     <Box
       className="sidebar_accound"
@@ -26,8 +26,9 @@ function SidebarAccount() {
     >
       <Link to="/user/2">
         <Box display={"flex"} gap={3} alignItems={"center"}>
-          <Avatar name={userName || ''} boxSize={10} />
-          <Text color={"white"}>{userName}</Text>
+          <Avatar name={user.sub || ""} boxSize={10} />
+          <Text color={"white"}>{user.sub}</Text>
+          
         </Box>{" "}
       </Link>
 
