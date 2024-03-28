@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { userType } from "../../../assets/types/LocalUser";
 import { HomeService } from "../../../services/api/HomeService";
+import { useQueryClient } from "react-query";
 function PostLike({
   id,
   usersIdWhoLikedPost,
 }: {
   id: number;
   usersIdWhoLikedPost: number[];
-}) {
+}) {  
+  const queryClient = useQueryClient();
   const [isLike, setIsLike] = useState(false);
   const [likeCountdis, setLikeCount] = useState(usersIdWhoLikedPost.length);
   const user: userType = JSON.parse(localStorage.getItem("user") || "{}");
@@ -19,10 +21,12 @@ function PostLike({
       setLikeCount(likeCountdis - 1);
       setIsLike(false);
       await HomeService.unlikePost(id,user.userId);
+      queryClient.invalidateQueries(["responsePostLike", user.userId]);
     } else {
       setLikeCount(likeCountdis + 1);
       setIsLike(true);
       await HomeService.likePost(id,user.userId);
+      queryClient.invalidateQueries(["responsePostLike", user.userId]);
     }
   };
 

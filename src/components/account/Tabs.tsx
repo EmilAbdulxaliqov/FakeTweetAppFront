@@ -1,5 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from "@chakra-ui/react";
 import TweetTab from "./TweetTab";
+import LikedPostsTab from "./LikedPostsTab";
 
 function TabsAccound() {
   return (
@@ -21,13 +22,10 @@ function TabsAccound() {
 
         <TabPanels>
           <TabPanel p={0}>
-             <TweetTab />
+            <TweetTab />
           </TabPanel>
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-          <TabPanel>
-            <p>three!</p>
+          <TabPanel  p={0}>
+            <LikedPostsTab />
           </TabPanel>
         </TabPanels>
       </Tabs>
