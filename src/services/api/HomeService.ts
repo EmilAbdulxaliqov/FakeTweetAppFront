@@ -15,6 +15,10 @@ export const HomeService = {
     return axiosPrivate.get(`post/user/${userId}`);
   }
   ,
+  getLikedPostByUser: async (userId: number) => {
+    return axiosPrivate.get(`post/user/${userId}/likes`);
+  }
+  ,
   deletePost: async (postId: number) => {
     return axiosPrivate.delete(`post/${postId}`);
   },
