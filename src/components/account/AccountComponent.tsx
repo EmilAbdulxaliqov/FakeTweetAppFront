@@ -1,18 +1,26 @@
-import { Avatar, Box, Image } from "@chakra-ui/react";
-import HeaderImg from "../../assets/images/Placeholder.png"
+import { Avatar, Box, Image, Spinner } from "@chakra-ui/react";
+import HeaderImg from "../../assets/images/Placeholder.png";
 import { useQuery } from "react-query";
-
-import Loading from "../../pages/Loading";
 import TabsAccound from "./Tabs";
 import { HomeService } from "../../services/api/HomeService";
 
 function AccountComponent() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const { isLoding, error, data } = useQuery("user", () => {
+  const { isLoading, error, data } = useQuery("user", () => {
     return HomeService.getUserById(user.userId);
   });
-
-  if (isLoding) return <Loading />;
+ console.log("user", data?.data);
+ 
+  if (isLoading)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    );
   if (error) return "An error has occurred: " + error;
 
   return (
@@ -37,7 +45,7 @@ function AccountComponent() {
           </Box>
         </Box>
       </Box>
-      <TabsAccound/>
+      <TabsAccound />
     </Box>
   );
 }
