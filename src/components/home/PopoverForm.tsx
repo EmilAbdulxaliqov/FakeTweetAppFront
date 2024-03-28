@@ -7,8 +7,8 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import instance from "../../service/axiosService";
 import { useMutation, useQueryClient } from "react-query";
+import { HomeService } from "../../services/api/HomeService";
 
 function PopoverForm({
   onCancel,
@@ -18,13 +18,9 @@ function PopoverForm({
 }) {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-  const userId = localStorage.getItem("userId");
-
+  const user = JSON.parse(localStorage.getItem("user") || "");
   const addPost = async () => {
-    await instance.post("post/user/" + userId, {
-      content: tweet,
-      title: "asd",
-    });
+    await HomeService.createPost("asd", tweet, user.userId);
   };
 
   const mutation = useMutation(addPost, {

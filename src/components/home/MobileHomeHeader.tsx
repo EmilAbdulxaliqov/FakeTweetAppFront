@@ -1,8 +1,11 @@
 import { Avatar, Box, Text } from "@chakra-ui/react";
 import PopoverTwitt from "./PopoverTwitt";
+import { json } from "react-router";
 
 function MobileHomeHeader() {
-  const username = localStorage.getItem("username");
+  const user = JSON.parse(localStorage.getItem("user") || "");
+
+  
   return (
     <Box
       className="mobile_header"
@@ -17,7 +20,7 @@ function MobileHomeHeader() {
       borderColor={"#8899A6"}
     >
       <Box className="accound_icon">
-        <Avatar name={username || ''} boxSize={8} />
+        <Avatar name={user.sub || ""} boxSize={8} />
       </Box>
       <Text className="header_title">Home</Text>
       <PopoverTwitt />

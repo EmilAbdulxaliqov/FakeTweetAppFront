@@ -1,24 +1,30 @@
 import { MdDeleteOutline } from "react-icons/md";
-
-import { Button, Icon } from "@chakra-ui/react";
-import instance from "../../../service/axiosService";
+import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "react-query";
+import { HomeService } from "../../../services/api/HomeService";
 
 function PostDelete({ id }: { id: number }) {
   const queryClient = useQueryClient();
-  const addPost = async () => {
-    await instance.delete("post/" + id);
+  const toast = useToast();
+  const deletePost = async () => {
+    await HomeService.deletePost(id);
   };
 
-  const mutation = useMutation(addPost, {
+  const mutation = useMutation(deletePost, {
     onSuccess: () => {
       queryClient.invalidateQueries("responsePost");
+      toast({
+        title: "Delete Post !",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     },
-
     onError: (error) => {
       console.log(error);
     },
   });
+
   return (
     <Button
       onClick={() => mutation.mutate()}

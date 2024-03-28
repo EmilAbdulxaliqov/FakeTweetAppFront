@@ -1,24 +1,28 @@
-import { Avatar, Box, Button, Textarea } from "@chakra-ui/react";
+import { Avatar, Box, Button, Textarea, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import instance from "../../service/axiosService";
+import { HomeService } from "../../services/api/HomeService";
 
 function TweetContent() {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-  const userId = localStorage.getItem("userId");
-  const username = localStorage.getItem("username");
+  const toast = useToast();
+  const user = JSON.parse(localStorage.getItem("user") || "");
+
   const addPost = async () => {
-    await instance.post("post/user/" + userId, {
-      content: tweet,
-      title: "asd",
-    });
+    await HomeService.createPost("asd", tweet, user.userId);
   };
 
   const mutation = useMutation(addPost, {
     onSuccess: () => {
       queryClient.invalidateQueries("responsePost");
       setTweet("");
+      toast({
+        title: "Create Post !",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     },
 
     onError: (error) => {
@@ -36,7 +40,7 @@ function TweetContent() {
       display={{ base: "none", md: "block" }}
     >
       <Box display={"flex"}>
-        <Avatar name={username || ""} boxSize={10} />
+        <Avatar name={user.sub || ""} boxSize={10} />
         <Textarea
           value={tweet}
           placeholder="What's happening?"

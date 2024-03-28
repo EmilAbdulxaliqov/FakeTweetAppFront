@@ -5,21 +5,21 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Service from "../pages/Service";
 import PrivateRoutes from "./PrivateRoutes.tsx";
+import AccountPage from "../pages/AccountPage.tsx";
 
 function mainRouter() {
   const element = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: <PrivateRoutes />,
       children: [
         {
-          path: "/",
-          element: <PrivateRoutes />,
+          element: <MainLayout />,
           children: [
             { index: true, element: <HomePage /> },
-            { path: "user/:id", element: <h1>User dfksjflkdjskf</h1> },
+            { path: "user/:id", element: <AccountPage />},
             { path: "service", element: <Service /> },
-          ]
+          ],
         },
       ],
 

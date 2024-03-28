@@ -5,7 +5,7 @@ import SidebarAccount from "./SidebarAccount.tsx";
 
 function Sidebar() {
   return (
-    <Box pos={"relative"} h={"full"}>
+    <Box pos={"relative"} height={"97vh"} w={"full"}>
       <Box className="site_icon" p={2}>
         <Image src={logo} alt="site logo" h={"36px"} w={"36px"} />
       </Box>
