@@ -1,16 +1,16 @@
-import React from "react";
 import { useQuery } from "react-query";
 import { HomeService } from "../../services/api/HomeService";
-import Loading from "../../pages/Loading";
 import PostCard from "../home/Post/PostCard";
 import { PostType } from "../../assets/types/PostType";
 import { Spinner } from "@chakra-ui/react";
+import { useLocation } from "react-router";
 
 function TweetTab() {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const userId:number =  parseInt(useLocation().pathname.split("/")[2]);
+
   const { isLoading, error, data } = useQuery(
-    ["responsePost", user.userId],
-    () => HomeService.getPostByuserId(user.userId),
+    ["responsePost", userId],
+    () => HomeService.getPostByuserId(userId),
     { refetchOnWindowFocus: false }
   );
 

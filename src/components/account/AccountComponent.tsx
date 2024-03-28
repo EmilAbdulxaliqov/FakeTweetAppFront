@@ -3,11 +3,13 @@ import HeaderImg from "../../assets/images/Placeholder.png";
 import { useQuery } from "react-query";
 import TabsAccound from "./Tabs";
 import { HomeService } from "../../services/api/HomeService";
+import { useLocation } from "react-router";
 
 function AccountComponent() {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const userId:number =  parseInt(useLocation().pathname.split("/")[2]);
+
   const { isLoading, error, data } = useQuery("user", () => {
-    return HomeService.getUserById(user.userId);
+    return HomeService.getUserById(userId);
   });
  console.log("user", data?.data);
  

@@ -18,7 +18,7 @@ function PostCard({ post }: { post: PostType }) {
   };
   return (
     <Box borderY={"1px"} borderColor={"#8899A6"} color={"white"} py={3} px={3}>
-      <Link to={`/profile/${userIdWhoCreatedPost}`}>
+      <Link to={`/user/${userIdWhoCreatedPost}`}>
         <Box display={"flex"} alignItems={"center"} gap={3}>
           <Avatar name={username} boxSize={{ base: 8, md: 10 }} />
           <Text>{username}</Text>

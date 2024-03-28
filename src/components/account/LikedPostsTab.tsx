@@ -3,12 +3,13 @@ import { HomeService } from "../../services/api/HomeService";
 import { PostType } from "../../assets/types/PostType";
 import PostCard from "../home/Post/PostCard";
 import { Spinner } from "@chakra-ui/react";
+import { useLocation } from "react-router";
 
 function LikedPostsTab() {
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const userId:number =  parseInt(useLocation().pathname.split("/")[2]);
   const { isLoading, error, data } = useQuery(
-    ["responsePostLike", user.userId],
-    () => HomeService.getLikedPostByUser(user.userId),
+    ["responsePostLike", userId],
+    () => HomeService.getLikedPostByUser(userId),
     { refetchOnWindowFocus: false }
   );
 
