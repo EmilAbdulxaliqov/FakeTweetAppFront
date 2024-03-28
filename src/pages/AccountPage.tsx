@@ -1,10 +1,7 @@
-function AccountPage() {
-  return (
-   <Box>
+import AccountComponent from "../components/account/AccountComponent";
 
-    
-   </Box>
-  );
+function AccountPage() {
+  return <AccountComponent />;
 }
 
 export default AccountPage;

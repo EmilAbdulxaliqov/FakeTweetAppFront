@@ -1,12 +1,20 @@
 import { axiosPrivate } from "./axiosPrivate.ts";
 
 export const HomeService = {
+   getUserById: async (userId: number) => {
+    return axiosPrivate.get(`user/${userId}`);
+  },
+
   getPosts: async () => {
     return axiosPrivate.get("post");
   },
   getPostById: async (userId: number) => {
     return axiosPrivate.get(`post/user/${userId}`);
   },
+  getPostByuserId: async (userId: number) => {
+    return axiosPrivate.get(`post/user/${userId}`);
+  }
+  ,
   deletePost: async (postId: number) => {
     return axiosPrivate.delete(`post/${postId}`);
   },

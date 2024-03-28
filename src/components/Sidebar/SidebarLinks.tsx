@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 function SidebarLinks() {
   const route = useLocation();
   const routeName = route.pathname.split("/")[1];
+  const user = JSON.parse(localStorage.getItem("user") || "{}") ;
   return (
     <Box className="nav_links">
       <List>
@@ -23,7 +24,7 @@ function SidebarLinks() {
         </ListItem>
 
         <ListItem py={3} color={"white"} fontSize={19} w={"min-content"}>
-          <Link to="/user">
+          <Link to={`/user/${user.userId}`}>
             <Box
               _hover={{ color: "#1DA1F2", transition: "0.5s" }}
               display={"flex"}
