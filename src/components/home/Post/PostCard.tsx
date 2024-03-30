@@ -53,7 +53,10 @@ function PostCard({ post }: Readonly<{ post: PostType }>) {
           {user.userId == userIdWhoCreatedPost && <PostDelete id={id} />}
           {user.userId == userIdWhoCreatedPost && <UpdatePost id={id} content={content} />}
         </Box>
-        <CommentList isOpened={isOpened} id={id} />
+        {
+          isOpened && <CommentList isOpened={isOpened} id={id} />
+        }
+        
       </Box>
     </Box>
   );

@@ -7,6 +7,8 @@ import CommentDelete from "./CommentDelete";
 
 function CommentList({ isOpened, id }: Readonly<{ isOpened: boolean; id: number }>) {
   const user = JSON.parse(localStorage.getItem("user") ?? "");
+
+
   const { isLoading, error, data } = useQuery(
     ["responseComment", id],
     () => {
@@ -15,6 +17,8 @@ function CommentList({ isOpened, id }: Readonly<{ isOpened: boolean; id: number 
     { refetchOnWindowFocus: false }
   );
 
+
+  
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
 
