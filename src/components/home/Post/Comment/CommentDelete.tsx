@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../../../services/api/HomeService";
 import { Button, Icon } from "@chakra-ui/react";
 
-function CommentDelete({ id, postId }: { id: number; postId: number }) {
+function CommentDelete({ id, postId }: Readonly<{ id: number; postId: number }>) {
   const queryClient = useQueryClient();
   const commentDelete = async () => {
     await HomeService.deleteComment(id);

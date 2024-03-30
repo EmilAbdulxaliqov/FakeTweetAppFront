@@ -7,23 +7,23 @@ import { useQueryClient } from "react-query";
 function PostLike({
   id,
   usersIdWhoLikedPost,
-}: {
+}: Readonly<{
   id: number;
   usersIdWhoLikedPost: number[];
-}) {  
+}>) {  
   const queryClient = useQueryClient();
   const [isLike, setIsLike] = useState(false);
-  const [likeCountdis, setLikeCount] = useState(usersIdWhoLikedPost.length);
-  const user: userType = JSON.parse(localStorage.getItem("user") || "{}");
+  const [likeCountdis, setLikeCountdis] = useState(usersIdWhoLikedPost.length);
+  const user: userType = JSON.parse(localStorage.getItem("user") ?? "{}");
 
   const handleLike = async () => {
     if (isLike) {
-      setLikeCount(likeCountdis - 1);
+      setLikeCountdis(likeCountdis - 1);
       setIsLike(false);
       await HomeService.unlikePost(id,user.userId);
       queryClient.invalidateQueries(["responsePostLike", user.userId]);
     } else {
-      setLikeCount(likeCountdis + 1);
+      setLikeCountdis(likeCountdis + 1);
       setIsLike(true);
       await HomeService.likePost(id,user.userId);
       queryClient.invalidateQueries(["responsePostLike", user.userId]);

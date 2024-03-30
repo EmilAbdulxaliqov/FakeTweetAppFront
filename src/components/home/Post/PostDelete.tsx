@@ -3,7 +3,7 @@ import { Button, Icon, useToast } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../../services/api/HomeService";
 
-function PostDelete({ id }: { id: number }) {
+function PostDelete({ id }: Readonly<{ id: number }>) {
   const queryClient = useQueryClient();
   const toast = useToast();
   const deletePost = async () => {

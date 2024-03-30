@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 function SidebarLinks() {
   const route = useLocation();
   const routeName = route.pathname.split("/")[1];
-  const user = JSON.parse(localStorage.getItem("user") || "{}") ;
+  const user = JSON.parse(localStorage.getItem("user") ?? "{}") ;
   return (
     <Box className="nav_links">
       <List>

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../../../services/api/HomeService";
 
-function CommentForm({ id }: { id: number }) {
+function CommentForm({ id }: Readonly<{ id: number }>) {
   const queryClient = useQueryClient();
   const [comment, setComment] = useState("");
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  const user = JSON.parse(localStorage.getItem("user") ?? "");
 
   const addComment = async () => {
     await HomeService.addComment(id, user.userId, comment);

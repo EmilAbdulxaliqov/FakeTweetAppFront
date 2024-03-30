@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { HomeService } from "../../../../services/api/HomeService";
 import CommentDelete from "./CommentDelete";
 
-function CommentList({ isOpened, id }: { isOpened: boolean; id: number }) {
-  const user = JSON.parse(localStorage.getItem("user") || "");
+function CommentList({ isOpened, id }: Readonly<{ isOpened: boolean; id: number }>) {
+  const user = JSON.parse(localStorage.getItem("user") ?? "");
   const { isLoading, error, data } = useQuery(
     ["responseComment", id],
     () => {

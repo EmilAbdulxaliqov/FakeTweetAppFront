@@ -8,11 +8,11 @@ import PostDelete from "./PostDelete";
 import { PostType } from "../../../assets/types/PostType.ts";
 import UpdatePost from "./UpdatePost.tsx";
 
-function PostCard({ post }: { post: PostType }) {
+function PostCard({ post }: Readonly<{ post: PostType }>) {
   const { id, content, userIdWhoCreatedPost, username, usersIdWhoLikedPost } =
     post;
   const [isOpened, setIsOpened] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const user = JSON.parse(localStorage.getItem("user") ?? "{}");
   const handleOpen = () => {
     setIsOpened(!isOpened);
   };
