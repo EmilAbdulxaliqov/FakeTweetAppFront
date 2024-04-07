@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { HomeService } from "../../../services/api/HomeService";
 import {
@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { FaRegPenToSquare } from "react-icons/fa6";
 
-function UpdatePost({ id, content }: { id: number; content: string }) {
+function UpdatePost({ id, content }: Readonly<{ id: number; content: string }>) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [newContent, setNewContent] = useState(content);
   const queryClient = useQueryClient();

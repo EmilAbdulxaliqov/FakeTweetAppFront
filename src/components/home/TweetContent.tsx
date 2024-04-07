@@ -7,7 +7,7 @@ function TweetContent() {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
   const toast = useToast();
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  const user = JSON.parse(localStorage.getItem("user") ?? "");
 
   const addPost = async () => {
     await HomeService.createPost("asd", tweet, user.userId);

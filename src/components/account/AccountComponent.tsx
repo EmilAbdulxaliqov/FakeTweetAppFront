@@ -6,13 +6,14 @@ import { HomeService } from "../../services/api/HomeService";
 import { useLocation } from "react-router";
 
 function AccountComponent() {
-  const userId:number =  parseInt(useLocation().pathname.split("/")[2]);
+  const userId: number = parseInt(useLocation().pathname.split("/")[2]);
 
   const { isLoading, error, data } = useQuery("user", () => {
     return HomeService.getUserById(userId);
   });
- console.log("user", data?.data);
- 
+
+  console.log("user", data?.data);
+
   if (isLoading)
     return (
       <Spinner
@@ -23,7 +24,7 @@ function AccountComponent() {
         size="xl"
       />
     );
-  if (error) return "An error has occurred: " + error;
+  if (error) return <p>Error</p>;
 
   return (
     <Box borderX={"1px"} borderColor={"#8899A6"} minH={"100vh"}>

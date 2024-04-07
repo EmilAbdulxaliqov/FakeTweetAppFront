@@ -12,13 +12,13 @@ import { HomeService } from "../../services/api/HomeService";
 
 function PopoverForm({
   onCancel,
-}: {
+}: Readonly<{
   firstFieldRef: React.RefObject<HTMLInputElement>;
   onCancel: () => void;
-}) {
+}>) {
   const [tweet, setTweet] = useState("");
   const queryClient = useQueryClient();
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  const user = JSON.parse(localStorage.getItem("user") ?? "");
   const addPost = async () => {
     await HomeService.createPost("asd", tweet, user.userId);
   };
