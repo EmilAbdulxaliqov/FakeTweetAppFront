@@ -1,14 +1,15 @@
 import { Avatar, Box, Button, Icon, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { FaRegComment } from "react-icons/fa";
 import PostLike from "./PostLike";
-import CommentList from "./Comment/CommentList";
 import { Link } from "react-router-dom";
 import PostDelete from "./PostDelete";
 import { PostType } from "../../../assets/types/PostType.ts";
 import UpdatePost from "./UpdatePost.tsx";
 
 function PostCard({ post }: Readonly<{ post: PostType }>) {
+  const CommentList = lazy(() => import("./Comment/CommentList"));
+
   const { id, content, userIdWhoCreatedPost, username, usersIdWhoLikedPost } =
     post;
   const [isOpened, setIsOpened] = useState(false);
@@ -54,7 +55,12 @@ function PostCard({ post }: Readonly<{ post: PostType }>) {
           {user.userId == userIdWhoCreatedPost && <UpdatePost id={id} content={content} />}
         </Box>
         {
-          isOpened && <CommentList isOpened={isOpened} id={id} />
+          isOpened &&
+          
+          <Suspense fallback={<p>Loading...</p>}>
+            <CommentList id={id} isOpened={isOpened} />
+          </Suspense>
+      
         }
         
       </Box>
